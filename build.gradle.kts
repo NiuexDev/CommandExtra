@@ -18,15 +18,15 @@ java {
     toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 }
 
-tasks.register<Copy>("copyJarPluginsDirectory") {
-    from(project.layout.buildDirectory.dir("libs"))
-    into("/devserver/plugins/")
-
-    // 只复制JAR文件
-    include("*.jar")
+tasks.processResources {
+    // 指定哪些占位符需要替换
+    filteringCharset = "UTF-8"
+    inputs.property("projectVersion", project.version)
+    expand("projectVersion" to project.version)
 }
 
-// 配置构建任务完成后执行自定义任务
-tasks.named("build") {
-    finalizedBy("copyJarPluginsDirectory")
+try {
+    apply(from = "copy.gradle.kts")
+} catch (e: Exception) {
+    println("已忽略执行copy.gradle.kts配置")
 }
