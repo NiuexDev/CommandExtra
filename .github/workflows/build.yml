@@ -1,0 +1,30 @@
+name: Build
+
+# 在push和pull request时触发
+on: [push, pull_request]
+
+jobs:
+  build:
+    # 设置环境为ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      # 检出仓库
+      - uses: actions/checkout@v4
+      
+      - name: 安装Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          
+      - name: 赋予权限
+        run: chmod +x gradlew
+        
+      - name: 构建
+        run: ./gradlew build
+        
+      - name: 上传构建工件
+        uses: actions/upload-artifact@v4
+        with:
+          name: CommandExtra-build
+          path: build/libs/*.jar
