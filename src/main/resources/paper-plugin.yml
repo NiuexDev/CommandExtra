@@ -1,5 +1,5 @@
 name: CommandExtra
-version: 0.0.1-Alpha
+version: ${projectVersion}
 main: dev.niuex.morecommand.CommandExtra
 description: 命令拓展——更多的符合原版标准的实用命令集
 author: NiuexDev
