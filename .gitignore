@@ -3,7 +3,7 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-local-config.gradle.kts
+copy.gradle.kts
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
