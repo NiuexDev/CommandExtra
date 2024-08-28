@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "dev.niuex.morecommand"
-version = "0.0.1-Alpha"
+version = "0.0.1-alpha"
 
 repositories {
     mavenCentral()
